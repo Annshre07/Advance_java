@@ -19,6 +19,7 @@ interface Swim{
 }
 
 // Sparrow class 
+//This class extends Birds since Bird is abstract class and Fly is an interface.
 class Sparrow extends Bird implements Fly {
     private String name;
 

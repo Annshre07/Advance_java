@@ -6,47 +6,47 @@
  */
 
 // Interface for Payment Methods  as every payment method does paying
-interface Payable {
+interface Pay {
     void pay(double amount);
 }
 
 //Payment Method
-class CreditCardPayment implements Payable {
+class CreditCardPayment implements Pay {
     @Override
     public void pay(double amount) {
-        System.out.println("Paid $" + amount + " using Credit Card.");
+        System.out.println("Customer paid the amount of Rs" + amount + " using Credit Card.");
     }
 }
 
-class PayPalPayment implements Payable {
+class PaytmPayment implements Pay {
     @Override
     public void pay(double amount) {
-        System.out.println("Paid $" + amount + " using PayPal.");
+        System.out.println("Custmer paid the amount of Rs" + amount + " using Paytm.");
     }
 }
 
-class GooglePayPayment implements Payable {
+class GooglePayPayment implements Pay {
     @Override
     public void pay(double amount) {
-        System.out.println("Paid $" + amount + " using Google Pay.");
+        System.out.println("Custmer paid the amount of Rs" + amount + " using Google Pay.");
     }
 }
-class PhonePayPayment implements Payable {
+class PhonePayPayment implements Pay {
     @Override
     public void pay(double amount) {
-        System.out.println("Paid $" + amount + " using Phone Pay.");
+        System.out.println("Custmer paid the amount of Rs" + amount + " using Phone Pay.");
     }
 }
 
 //No need to touch here ..
-class PaymentProcess {
-    private Payable ModeOfPayment;
+class PaymentMode {
+    private Pay ModeOfPayment;
 
-    public PaymentProcess(Payable ModeOfPayment) {
+    public PaymentMode(Pay ModeOfPayment) {
         this.ModeOfPayment =ModeOfPayment;  
     }
 
-    public void processPayment(double amount) {
+    public void modePayment(double amount) {
         ModeOfPayment.pay(amount);
     }
 }
@@ -54,22 +54,22 @@ class PaymentProcess {
 //Main Class 
 public class PaymentSystem {
     public static void main(String[] args) {
-        Payable creditCard = new CreditCardPayment();
-        Payable paypal = new PayPalPayment();
-        Payable googlePay = new GooglePayPayment();
-        Payable phonePay = new PhonePayPayment();
+        Pay creditCard = new CreditCardPayment();
+        Pay paytm = new PaytmPayment();
+        Pay googlePay = new GooglePayPayment();
+        Pay phonePay = new PhonePayPayment();
 
 
-        PaymentProcess process1 = new PaymentProcess(creditCard);
-        process1.processPayment(100.50);
+        PaymentMode mode1 = new  PaymentMode(creditCard);
+        mode1.modePayment(100.50);
 
-        PaymentProcess process2 = new PaymentProcess(paypal);
-        process2.processPayment(200.75);
+        PaymentMode mode2 = new  PaymentMode(paytm);
+        mode2.modePayment(200.75);
 
-        PaymentProcess process3 = new PaymentProcess(googlePay);
-        process3.processPayment(50.25);
+        PaymentMode mode3 = new  PaymentMode(googlePay);
+        mode3.modePayment(50.25);
 
-        PaymentProcess process4 = new PaymentProcess(phonePay);
-        process4.processPayment(150.25);
+        PaymentMode mode4 = new  PaymentMode(phonePay);
+        mode4.modePayment(150.25);
     }
 }

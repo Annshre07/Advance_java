@@ -1,4 +1,5 @@
-//Creating the interface for SRP (Single Responsibility Principle)
+//Creating the interface for SRP (Single Responsibility Principle) 
+//Both the interfaces have a single fnctionality making a SRP
 interface Employee {
     void printPaySlip();
 }
@@ -13,7 +14,7 @@ class EmployeeImp implements Employee {
     private String name;
     private double salary;
 
-    // Constructor as the object EmployeeImp is created it gets iniialised.
+    // Constructor as the object EmployeeImp is created it gets intialised.
     public EmployeeImp(String name, double salary) {
         this.name = name;
         this.salary = salary;
@@ -40,7 +41,7 @@ class EmployeeImp implements Employee {
 class DatabaseStorage implements EmployeeStorage {
     @Override
     public void save(EmployeeImp employee) {
-        System.out.println("Saving " + employee.getName() + " to the database...");
+        System.out.println("Saving " + employee.getName() + " to the database.");
     }
 }
 
@@ -48,7 +49,7 @@ class DatabaseStorage implements EmployeeStorage {
 class FileStorage implements EmployeeStorage {
     @Override
     public void save(EmployeeImp employee) {
-        System.out.println("Saving " + employee.getName() + " to a file...");
+        System.out.println("Saving " + employee.getName() + " to a file.");
     }
 }
 
@@ -66,7 +67,8 @@ public class Employee2 {
         // Saving Employees
         EmployeeStorage dbStorage = new DatabaseStorage();
         EmployeeStorage fileStorage = new FileStorage();
-
+        //Instead of just calling save we are sending objects of employee because in future we mght add the 
+        //attributes of the emloyee which may end up creating a problem.
         dbStorage.save(emp1);  
         fileStorage.save(emp2); 
     }
